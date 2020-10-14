@@ -90,4 +90,10 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209'
+    }
+}
+
 jar.finalizedBy('reobfJar')
