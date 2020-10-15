@@ -1,0 +1,106 @@
+Index: src/main/java/io/gamer4life1/simplelogistics/blocks/Controller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package io.gamer4life1.simplelogistics.blocks;\n\nimport io.gamer4life1.simplelogistics.util.Reference;\nimport net.minecraft.block.Block;\nimport net.minecraft.block.material.Material;\n\npublic class Controller extends Block\n{\n    public Controller()\n    {\n        super(Material.ROCK);\n        setUnlocalizedName(Reference.MOD_ID + \".controller\");\n        setRegistryName(\"controller\");\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/io/gamer4life1/simplelogistics/blocks/Controller.java	(revision c0dfaa882d9093171b318b5a7b43de9aab96cc4d)
++++ src/main/java/io/gamer4life1/simplelogistics/blocks/Controller.java	(date 1602791705743)
+@@ -11,5 +11,6 @@
+         super(Material.ROCK);
+         setUnlocalizedName(Reference.MOD_ID + ".controller");
+         setRegistryName("controller");
++        setHardness(0.7F);
+     }
+ }
+Index: src/main/java/io/gamer4life1/simplelogistics/SimpleLogistics.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package io.gamer4life1.simplelogistics;\nimport io.gamer4life1.simplelogistics.proxy.CommonProxy;\nimport io.gamer4life1.simplelogistics.util.Reference;\n\nimport net.minecraft.block.Block;\nimport net.minecraft.block.state.IBlockState;\nimport net.minecraft.init.Blocks;\nimport net.minecraft.item.ItemStack;\nimport net.minecraft.util.text.ITextComponent;\nimport net.minecraftforge.event.entity.player.PlayerInteractEvent;\nimport net.minecraftforge.event.world.BlockEvent;\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.Mod.Instance;\nimport net.minecraftforge.fml.common.Mod.EventHandler;\nimport net.minecraftforge.fml.common.SidedProxy;\nimport net.minecraftforge.fml.common.event.FMLInitializationEvent;\nimport net.minecraftforge.fml.common.event.FMLPostInitializationEvent;\nimport net.minecraftforge.fml.common.event.FMLPreInitializationEvent;\nimport net.minecraftforge.fml.common.eventhandler.Event;\nimport net.minecraftforge.fml.common.eventhandler.SubscribeEvent;\nimport org.apache.logging.log4j.LogManager;\nimport org.apache.logging.log4j.Logger;\n\n\n@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)\npublic class SimpleLogistics\n{\n    @Instance\n    public static SimpleLogistics instance;\n\n    @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)\n    public static CommonProxy proxy;\n\n    private static Logger logger = LogManager.getLogger();\n\n    @EventHandler\n    public void preInit(FMLPreInitializationEvent event)\n    {\n\n    }\n\n    @EventHandler\n    public void init(FMLInitializationEvent event)\n    {\n\n    }\n\n    @EventHandler\n    public void PostInit(FMLPostInitializationEvent event)\n    {\n\n    }\n\n    @SubscribeEvent\n    public void leftClick(PlayerInteractEvent.LeftClickBlock event) {\n        ItemStack itemStack = event.getEntityPlayer().getHeldItem(event.getHand());\n        logger.info(itemStack.getDisplayName());\n        IBlockState state = event.getWorld().getBlockState(event.getPos());\n        Block block = state.getBlock();\n        if (block.getLocalizedName().equalsIgnoreCase(\"simplelogistics:controller\")) {\n            logger.info(\"Detected click on controller yay ^-^\");\n        }\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/io/gamer4life1/simplelogistics/SimpleLogistics.java	(revision c0dfaa882d9093171b318b5a7b43de9aab96cc4d)
++++ src/main/java/io/gamer4life1/simplelogistics/SimpleLogistics.java	(date 1602786978144)
+@@ -1,4 +1,5 @@
+ package io.gamer4life1.simplelogistics;
++import io.gamer4life1.simplelogistics.handlers.ControllerLeftClickHander;
+ import io.gamer4life1.simplelogistics.proxy.CommonProxy;
+ import io.gamer4life1.simplelogistics.util.Reference;
+ 
+@@ -7,6 +8,7 @@
+ import net.minecraft.init.Blocks;
+ import net.minecraft.item.ItemStack;
+ import net.minecraft.util.text.ITextComponent;
++import net.minecraftforge.common.MinecraftForge;
+ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+ import net.minecraftforge.event.world.BlockEvent;
+ import net.minecraftforge.fml.common.Mod;
+@@ -31,7 +33,7 @@
+     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
+     public static CommonProxy proxy;
+ 
+-    private static Logger logger = LogManager.getLogger();
++    public static Logger logger = LogManager.getLogger();
+ 
+     @EventHandler
+     public void preInit(FMLPreInitializationEvent event)
+@@ -48,18 +50,7 @@
+     @EventHandler
+     public void PostInit(FMLPostInitializationEvent event)
+     {
+-
+-    }
+-
+-    @SubscribeEvent
+-    public void leftClick(PlayerInteractEvent.LeftClickBlock event) {
+-        ItemStack itemStack = event.getEntityPlayer().getHeldItem(event.getHand());
+-        logger.info(itemStack.getDisplayName());
+-        IBlockState state = event.getWorld().getBlockState(event.getPos());
+-        Block block = state.getBlock();
+-        if (block.getLocalizedName().equalsIgnoreCase("simplelogistics:controller")) {
+-            logger.info("Detected click on controller yay ^-^");
+-        }
++        MinecraftForge.EVENT_BUS.register(new ControllerLeftClickHander());
+     }
+ 
+ }
+Index: src/main/java/io/gamer4life1/simplelogistics/handlers/ControllerLeftClickHander.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/io/gamer4life1/simplelogistics/handlers/ControllerLeftClickHander.java	(date 1602791796267)
++++ src/main/java/io/gamer4life1/simplelogistics/handlers/ControllerLeftClickHander.java	(date 1602791796267)
+@@ -0,0 +1,30 @@
++package io.gamer4life1.simplelogistics.handlers;
++
++import io.gamer4life1.simplelogistics.SimpleLogistics;
++import net.minecraft.block.Block;
++import net.minecraft.block.state.IBlockState;
++import net.minecraft.item.ItemStack;
++import net.minecraftforge.event.entity.player.PlayerInteractEvent;
++import net.minecraftforge.fml.common.Mod;
++import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
++
++import static io.gamer4life1.simplelogistics.SimpleLogistics.logger;
++
++@Mod.EventBusSubscriber
++public class ControllerLeftClickHander {
++    @SubscribeEvent
++    public void leftClick(PlayerInteractEvent.LeftClickBlock event) {
++        ItemStack itemStack = event.getEntityPlayer().getHeldItem(event.getHand());
++        if (itemStack.toString().equalsIgnoreCase("Air")) {
++            return;
++        }
++        IBlockState state = event.getWorld().getBlockState(event.getPos());
++        Block block = state.getBlock();
++        logger.info(block.getLocalizedName());
++        if (block.getLocalizedName().equalsIgnoreCase("tile.simplelogistics.controller.name")) {
++            logger.info("Item: " + itemStack.getItem().getRegistryName().toString());
++            logger.info("Detected click on controller yay ^-^");
++
++        }
++    }
++}

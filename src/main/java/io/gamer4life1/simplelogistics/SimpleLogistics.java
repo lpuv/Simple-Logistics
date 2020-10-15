@@ -1,4 +1,5 @@
 package io.gamer4life1.simplelogistics;
+import io.gamer4life1.simplelogistics.handlers.ControllerLeftClickHander;
 import io.gamer4life1.simplelogistics.proxy.CommonProxy;
 import io.gamer4life1.simplelogistics.tabs.CreativeBlockTab;
 import io.gamer4life1.simplelogistics.tabs.CreativeItemTab;
@@ -10,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,7 +39,7 @@ public class SimpleLogistics
     public static final CreativeTabs ItemTAB = new CreativeItemTab("simpleLogisticsItemTab");
     public static final CreativeTabs BlockTAB = new CreativeBlockTab("simpleLogisticsBlockTab");
 
-    private static Logger logger = LogManager.getLogger();
+    public static Logger logger = LogManager.getLogger();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -54,18 +56,7 @@ public class SimpleLogistics
     @EventHandler
     public void PostInit(FMLPostInitializationEvent event)
     {
-
-    }
-
-    @SubscribeEvent
-    public void leftClick(PlayerInteractEvent.LeftClickBlock event) {
-        ItemStack itemStack = event.getEntityPlayer().getHeldItem(event.getHand());
-        logger.info(itemStack.getDisplayName());
-        IBlockState state = event.getWorld().getBlockState(event.getPos());
-        Block block = state.getBlock();
-        if (block.getLocalizedName().equalsIgnoreCase("simplelogistics:controller")) {
-            logger.info("Detected click on controller yay ^-^");
-        }
+        MinecraftForge.EVENT_BUS.register(new ControllerLeftClickHander());
     }
 
 }
