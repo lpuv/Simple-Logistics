@@ -2,6 +2,7 @@ package io.gamer4life1.simplelogistics;
 import io.gamer4life1.simplelogistics.proxy.CommonProxy;
 import io.gamer4life1.simplelogistics.util.Reference;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -55,6 +56,10 @@ public class SimpleLogistics
         ItemStack itemStack = event.getEntityPlayer().getHeldItem(event.getHand());
         logger.info(itemStack.getDisplayName());
         IBlockState state = event.getWorld().getBlockState(event.getPos());
+        Block block = state.getBlock();
+        if (block.getLocalizedName().equalsIgnoreCase("simplelogistics:controller")) {
+            logger.info("Detected click on controller yay ^-^");
+        }
     }
 
 }
