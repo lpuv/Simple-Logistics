@@ -1,0 +1,6 @@
+﻿item.simplelogistics.logistic_ingot.name=Logistic Ingot
+
+tile.simplelogistics.controller.name=Controller
+
+itemGroup.simplelogistics.simpleLogisticsItemTab=Simple Logistics Items
+itemGroup.simplelogistics.simpleLogisticsBlockTab=Simple Logistics Blocks

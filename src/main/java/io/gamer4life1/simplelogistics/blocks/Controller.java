@@ -11,5 +11,6 @@ public class Controller extends Block
         super(Material.ROCK);
         setUnlocalizedName(Reference.MOD_ID + ".controller");
         setRegistryName("controller");
+        //setCreativeTab();
     }
 }

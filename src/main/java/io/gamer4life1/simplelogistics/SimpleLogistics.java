@@ -1,9 +1,12 @@
 package io.gamer4life1.simplelogistics;
 import io.gamer4life1.simplelogistics.proxy.CommonProxy;
+import io.gamer4life1.simplelogistics.tabs.CreativeBlockTab;
+import io.gamer4life1.simplelogistics.tabs.CreativeItemTab;
 import io.gamer4life1.simplelogistics.util.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
@@ -30,6 +33,9 @@ public class SimpleLogistics
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
     public static CommonProxy proxy;
+
+    public static final CreativeTabs ItemTAB = new CreativeItemTab("simpleLogisticsItemTab");
+    public static final CreativeTabs BlockTAB = new CreativeBlockTab("simpleLogisticsBlockTab");
 
     private static Logger logger = LogManager.getLogger();
 

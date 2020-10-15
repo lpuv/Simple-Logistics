@@ -9,5 +9,6 @@ public class LogisticIngot extends Item
     {
         setRegistryName("logistic_ingot");
         setUnlocalizedName(Reference.MOD_ID + ".logistic_ingot");
+        //setCreativeTab();
     }
 }
