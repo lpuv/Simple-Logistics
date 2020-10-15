@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class Controller extends Block implements ITileEntityProvider
@@ -21,6 +22,11 @@ public class Controller extends Block implements ITileEntityProvider
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return null;
+        return new tileController();
     }
+
+    private tileController getTE(World world, BlockPos pos) {
+        return (tileController) world.getTileEntity(pos);
+    }
+
 }
