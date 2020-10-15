@@ -1,6 +1,6 @@
 package io.gamer4life1.simplelogistics.proxy;
 
-import io.gamer4life1.simplelogistics.init.LogisticIngot;
+import io.gamer4life1.simplelogistics.items.LogisticIngot;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

@@ -1,4 +1,4 @@
-package io.gamer4life1.simplelogistics.init;
+package io.gamer4life1.simplelogistics.items;
 
 import io.gamer4life1.simplelogistics.util.Reference;
 import net.minecraft.item.Item;
