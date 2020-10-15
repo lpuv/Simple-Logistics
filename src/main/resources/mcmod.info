@@ -1,0 +1,16 @@
+[
+{
+  "modid": "simplelogistics",
+  "name": "Simple Logistics",
+  "description": "<PLACEHOLDER>",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Sardine123", "Braxbro", "nietscape", "Fran-T4NK", "Pithlyx"],
+  "credits": "Brax, for the idea, and the other devs for their work ^-^",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
