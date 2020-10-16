@@ -1,19 +1,12 @@
 package io.gamer4life1.simplelogistics;
-import io.gamer4life1.simplelogistics.handlers.ControllerLeftClickHander;
+import io.gamer4life1.simplelogistics.handlers.ControllerLeftClickHandler;
 import io.gamer4life1.simplelogistics.proxy.CommonProxy;
 import io.gamer4life1.simplelogistics.tabs.CreativeBlockTab;
 import io.gamer4life1.simplelogistics.tabs.CreativeItemTab;
 import io.gamer4life1.simplelogistics.util.Reference;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -21,8 +14,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,7 +47,7 @@ public class SimpleLogistics
     @EventHandler
     public void PostInit(FMLPostInitializationEvent event)
     {
-        MinecraftForge.EVENT_BUS.register(new ControllerLeftClickHander());
+        MinecraftForge.EVENT_BUS.register(new ControllerLeftClickHandler());
     }
 
 }

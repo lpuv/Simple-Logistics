@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import static io.gamer4life1.simplelogistics.SimpleLogistics.logger;
 
 @Mod.EventBusSubscriber
-public class ControllerLeftClickHander {
+public class ControllerLeftClickHandler {
     @SubscribeEvent
     public void leftClick(PlayerInteractEvent.LeftClickBlock event) {
         ItemStack itemStack = event.getEntityPlayer().getHeldItem(event.getHand());
