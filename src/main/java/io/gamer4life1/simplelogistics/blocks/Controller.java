@@ -1,5 +1,6 @@
 package io.gamer4life1.simplelogistics.blocks;
 
+import io.gamer4life1.simplelogistics.SimpleLogistics;
 import io.gamer4life1.simplelogistics.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -17,7 +18,7 @@ public class Controller extends Block implements ITileEntityProvider
         setRegistryName("controller");
 
         setHardness(5.0F);
-        //setCreativeTab();
+        setCreativeTab(SimpleLogistics.BlockTAB);
     }
 
     @Override
