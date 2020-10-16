@@ -8,4 +8,6 @@ public class ModBlocks
 {
     @GameRegistry.ObjectHolder(Reference.MOD_ID + ":controller")
     public static Controller controller;
+
+
 }

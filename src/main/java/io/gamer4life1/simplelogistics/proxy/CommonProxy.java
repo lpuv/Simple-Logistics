@@ -1,9 +1,8 @@
 package io.gamer4life1.simplelogistics.proxy;
 
 import io.gamer4life1.simplelogistics.ModBlocks;
-import io.gamer4life1.simplelogistics.ModItems;
 import io.gamer4life1.simplelogistics.blocks.Controller;
-import io.gamer4life1.simplelogistics.items.LogisticIngot;
+import io.gamer4life1.simplelogistics.items.Wrench;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -18,7 +17,7 @@ public class CommonProxy
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
-        event.getRegistry().register(new LogisticIngot()); //Logistic ingot item
+        event.getRegistry().register(new Wrench()); //Wrench item
 
         event.getRegistry().register(new ItemBlock(ModBlocks.controller).setRegistryName(ModBlocks.controller.getRegistryName())); //Controller item
     }

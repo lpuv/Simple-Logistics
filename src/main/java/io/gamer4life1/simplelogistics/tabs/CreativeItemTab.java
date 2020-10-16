@@ -1,7 +1,6 @@
 package io.gamer4life1.simplelogistics.tabs;
 
 import io.gamer4life1.simplelogistics.ModItems;
-import io.gamer4life1.simplelogistics.items.LogisticIngot;
 import io.gamer4life1.simplelogistics.util.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -19,6 +18,6 @@ public class CreativeItemTab extends CreativeTabs
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(ModItems.logisticIngot);
+        return new ItemStack(ModItems.wrench);
     }
 }
